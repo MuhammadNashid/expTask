@@ -1,6 +1,6 @@
 async function fetchDonors() {
     try {
-        const response = await fetch('/api/getdonors');
+        const response = await fetch('http://localhost:4000/api/getdonors');
         const donors = await response.json();
         let str=''
 
@@ -12,10 +12,9 @@ async function fetchDonors() {
                 <div><p>Blood Type: ${donor.blood}</p></div>
                 <div><p>Phone: ${donor.phone}</p></div>
                 <div><p>Gender: ${donor.gender}</p></div>
-               
+                <div><button class="edit-btn" onclick="editDonor('${donor._id}')">Edit</button>
+                <button class="del-btn" >Delete</button></div>
             </div>
-            <div><button class="edit-btn" onclick="editDonor('${donor._id}')">Edit</button>
-            <button class="del-btn" >Delete</button></div>
             `;
             document.getElementById('donorList').innerHTML=str
         });
